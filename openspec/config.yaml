@@ -1,0 +1,64 @@
+schema: spec-driven
+
+context: |
+  Tech stack: JavaScript + React + Vite + Tailwind CSS v4 + Supabase
+  Architecture: Clean Architecture (core, application, infrastructure, ui)
+  Testing: Not yet installed — Vitest planned
+  Style: ESLint + Prettier planned
+
+rules:
+  proposal:
+    - Include rollback plan for risky changes
+  specs:
+    - Use Given/When/Then for scenarios
+    - Use RFC 2119 keywords (MUST, SHALL, SHOULD, MAY)
+  design:
+    - Include sequence diagrams for complex flows
+    - Document architecture decisions with rationale
+  tasks:
+    - Group by phase, use hierarchical numbering
+    - Keep tasks completable in one session
+  apply:
+    guidelines:
+      - Follow Clean Architecture layer boundaries
+      - Presentational components in ui/, logic in application/, domain in core/
+    tdd: false
+    test_command: ""
+  verify:
+    test_command: "npm test"
+    build_command: "npm run build"
+    coverage_threshold: 0
+  archive:
+    - Warn before merging destructive deltas
+
+strict_tdd: false
+
+testing:
+  strict_tdd: false
+  detected: 2026-08-04
+  runner:
+    command: ""
+    framework: Vitest (planned, not installed)
+  layers:
+    unit:
+      available: false
+      tool: ""
+    integration:
+      available: false
+      tool: ""
+    e2e:
+      available: false
+      tool: ""
+  coverage:
+    available: false
+    command: ""
+  quality:
+    linter:
+      available: false
+      command: ""
+    type_checker:
+      available: false
+      command: ""
+    formatter:
+      available: false
+      command: ""
