@@ -1,6 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { signPlayers } from "./signPlayers.js";
 import { changeClub, getJobOffers } from "./changeClub.js";
+import { createRNG } from "../core/rng.js";
 describe("signPlayers", () => {
   it("aplica efecto de quimica al elegir si", () => {
     const dt = { name: "Lucas", prestige: 50, chemistry: 40 };
@@ -54,7 +55,7 @@ it("devuelve clubes del tier inferior", () => {
       { id: "c3", tier: 4, league: "ascenso" },
       { id: "c4", tier: 4, league: "ascenso" },
     ];
-    const offers = getJobOffers(dt, clubs);
+    const offers = getJobOffers(dt, clubs, createRNG(42));
     expect(offers.length).toBe(2);
     offers.forEach((c) => {
       expect(c.tier).toBe(4);

@@ -22,14 +22,20 @@ export function changeClub(dt, newClub) {
  * @param {() => number} rng
  * @returns {Array} 3 ofertas de clubes del tier inferior
  */
-export function getJobOffers(dt, allClubs) {
+export function getJobOffers(dt, allClubs, rng) {
   const currentTier = getTier(dt).tier;
   const nextTier = Math.max(1, currentTier - 1);
+
   const eligible = allClubs.filter((c) => {
-    // clubes del tier inferior que estén en ascenso
     return c.tier === nextTier && c.league === "ascenso";
   });
-  // devolver hasta 3 al azar
-  const shuffled = [...eligible].sort(() => 0.5 - Math.random());
+
+  // Fisher-Yates shuffle con RNG inyectable
+  const shuffled = [...eligible];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(rng() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+
   return shuffled.slice(0, 3);
 }
