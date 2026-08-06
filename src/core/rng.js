@@ -4,10 +4,10 @@
  * @returns {() => number} Función que devuelve floats entre 0 y 1
  */
 
- export function createRNG(seed) {
- 	let state = seed;
- 	return function () {
- 		state = (state * 1664525 + 1013904223) | 0;
- 		return state;
- 	}
- }
+export function createRNG(seed) {
+  let state = seed | 0;
+  return function () {
+    state = (state * 1664525 + 1013904223) | 0;
+    return (state >>> 0) / 4294967296;
+  };
+}

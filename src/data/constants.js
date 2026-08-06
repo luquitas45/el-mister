@@ -20,10 +20,27 @@ export const GAME = {
     { tier: 4, min: 61, max: 80, label: "Primera (medio)" },
     { tier: 5, min: 81, max: 100, label: "Primera (alto)" },
   ],
-  // --- Temporada ---
+  // --- Temporada y ligas ---
   SEASON: {
     MATCHES: 3,
-    TOTAL_TEAMS: 20,
+  },
+  LEAGUE: {
+    ascenso: {
+      totalTeams: 20,
+      zones: [
+        { zone: 1, minWins: 2, label: "Promoción directa", min: 1, max: 3, outcome: "promoted" },
+        { zone: 2, minWins: 1, label: "Playoff (reducido)", min: 4, max: 8, outcome: "playoff" },
+        { zone: 3, minWins: 0, label: "Esperar al año que viene", min: 9, max: 20, outcome: "stay" },
+      ],
+    },
+    primera: {
+      totalTeams: 20,
+      zones: [
+        { zone: 1, minWins: 2, label: "Campeón + Libertadores", min: 1, max: 4, outcome: "champion" },
+        { zone: 2, minWins: 1, label: "Media tabla", min: 5, max: 16, outcome: "stay" },
+        { zone: 3, minWins: 0, label: "Descenso", min: 9, max: 20, outcome: "relegated" },
+      ],
+    },
   },
   // --- Partido ---
   MATCH: {
